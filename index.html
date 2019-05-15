@@ -15,8 +15,8 @@
   
     <style>
       body {
-    background-color: 
-}
+    background-color: rgb(29, 29, 29);
+      }
 #map {
     padding-top: 0px;
     width: 94%;
@@ -109,22 +109,54 @@ width: 35%; }
              </ul>
              </div>
 
-             <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header" id="chat">
-                        <!-- Chat -->
-                        Chat (Public)
-                    </div>
-                    <div class="card-body" id="well-section">
-                        <!-- chat transcript -->
-                        Transcript
-                        <ul id="messages"></ul>
-                    </div>
-                    <form class="input" action="">
-                        <input id="m" autocomplete="off" /><button>Send</button>
-                      </form>
-                </div>
+             <!-- show top rank-->
+    <div id="toprank"class="row">
+
+        <div class="col-lg-4">
+  
+          <div class="card">
+            <div id="tiptop" class="card-header">
+              Top Ranking
             </div>
+            <div class="card-body" id="well-section">
+  
+              <!-- Content will go in here -->
+             
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header" id="chat">
+                    <!-- Chat -->
+                    Chat (Public)
+                </div>
+                <div class="card-body" id="well-section">
+                    <!-- chat transcript -->
+                    Transcript
+                    <ul id="messages"></ul>
+                </div>
+                <form class="input" action="">
+                    <input id="m" autocomplete="off" /><button>Send</button>
+                  </form>
+            </div>
+        </div>
+        <div class="col-lg-4">
+  
+            <div class="card">
+              <div id="tiptop" class="card-header">
+                Challenges
+              </div>
+              <div class="card-body" id="bad-section">
+    
+                <!-- challenges will go in here -->
+               
+              </div>
+              
+            </div>
+          </div>
+      </div>
         <!-- <ul id="messages"></ul>
       <form class="input" action="">
           <input id="m" autocomplete="off" /><button>Send</button>
