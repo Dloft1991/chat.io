@@ -54,3 +54,14 @@ li:hover {
 #add-btn {
     background-color: black;
 }
+
+.carousl {
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 2%;
+}
+
+.titleName {
+    color: white;
+    background-color: rgb(29, 29, 29);
+}
