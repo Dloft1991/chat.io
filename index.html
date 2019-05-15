@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="style/allstyles.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://js.arcgis.com/4.11/"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
     <style>
       body {
@@ -35,10 +37,23 @@
     margin-left: 25%;
     padding-top: 2%;
 }
-
 #titleName {
-    color: white;
-    background-color: rgb(29, 29, 29);
+  background-color: white;
+  text-align: center;
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 20px;
+    margin-top: 30px;
+}
+#projectName {
+  background-color: white;
+  text-align: center;
+    color: black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 50px;
+    /* background-color: rgb(29, 29, 29); */
 }
 /* all font 
 font-family: 'Black Ops One', cursive;
@@ -83,6 +98,15 @@ width: 35%; }
       width: 35%; }
       #messages li:nth-child(odd) { background: #eee; } */
       
+      #viewDiv {
+            width: 100%;
+            height: 400px;
+        }
+
+        .row {
+            padding: 5%;
+        }
+
     </style>
   </head>
   <script src="/socket.io/socket.io.js"></script>
@@ -102,22 +126,23 @@ width: 35%; }
       });
     });
   </script>
+
   <body>
-      <div class="container" >
+      <!-- <div class="container" > -->
           <!--Nav bar-->
-          <ul class="nav justify-content-center">
-             <li class="nav-item">
+          <!-- <ul class="nav justify-content-center">
+             <li class="nav-item"> -->
                  <!--AKA ad  d New Player-->
-                 <a class="nav-link" href="...">Sign Up</a>
+                 <!-- <a class="nav-link" href="...">Sign Up</a>
                </li>
-             <li class="nav-item">
+             <li class="nav-item"> -->
                <!--AKA search player-->
-                 <a class="nav-link" href="pages/home.html">Home</a>
+                 <!-- <a class="nav-link" href="pages/home.html">Home</a>
              </li>
              </ul>
-             </div>
+             </div> -->
              <!--TITLE-->
-             <div id="titleName">KING OF THE COURT</div>
+             <div id="projectName">KING OF THE COURT</div>
 
              <!--Carousl-->
   <section id="carousl">
@@ -148,7 +173,67 @@ width: 35%; }
           </a>
         </div>
       </section>
-      
+      <!--Sign up-->
+      <div id="titleName">Sign up</div>
+
+    
+      <!--MAP AND CHALLENGES-->
+      <div id="titleName">Connect</div>
+      <br>
+    <div id="map" class="row">
+        <div class="col-lg-6">
+
+                <div class="card">
+                  <div id="chat" class="card-header">
+                   Create a Challenge
+                  </div>
+                  <div class="card-body">
+                    <form action="" method="POST" role="form">
+        
+                      <div class="form-group">
+                        <label for="">Alias</label>
+                        <input type="text" class="form-control" id="aliasname" placeholder="Displayed Name">
+                      </div>
+        
+                      <div class="form-group">
+                        <label for="">Sport</label>
+                        <input type="text" class="form-control" id="sport" placeholder="Sport">
+                      </div>
+        
+                      <div class="form-group">
+                        <label for="">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Location">
+                        
+                      </div>
+        
+                      <div class="form-group">
+                          <label for="">Time</label>
+                          <input type="text" class="form-control" id="time" placeholder="Time">
+                        </div>
+        
+                    </form>
+                    <br>
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-primary btn-md" id="add-chall">
+                        <span></span>Create Challenge</button>
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div id="chat" class="card-header">
+                Find Your Court
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text" id="viewDiv"></p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+        </div>
+    </div>
+</div>
 <!--FIRST DROP-->
 <div id="titleName">Online</div>
 <div class="pos-f-t">
@@ -214,11 +299,63 @@ width: 35%; }
       </button>
     </nav>
   </div>
-
+  
     
         <!-- <ul id="messages"></ul>
       <form class="input" action="">
           <input id="m" autocomplete="off" /><button>Send</button>
         </form> -->
   </body>
+
+<script>
+  //Map Script
+    require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/widgets/Search"
+    ], function (Map, MapView, Search) {
+
+        var map = new Map({
+            basemap: "topo-vector"
+        });
+
+        var view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [-118.71511, 34.09042],
+            zoom: 11
+        });
+
+        var search = new Search({
+            view: view
+        });
+        view.ui.add(search, "top-right");
+
+
+        view.on("click", function (evt) {
+            search.clear();
+            view.popup.clear();
+            if (search.activeSource) {
+                var geocoder = search.activeSource.locator; // World geocode service
+                geocoder.locationToAddress(evt.mapPoint)
+                    .then(function (response) { // Show the address found
+                        var address = response.address;
+                        showPopup(address, evt.mapPoint);
+                    }, function (err) { // Show no address found
+                        showPopup("No address found.", evt.mapPoint);
+                    });
+            }
+        });
+
+        function showPopup(address, pt) {
+            view.popup.open({
+                title: + Math.round(pt.longitude * 100000) / 100000 + "," + Math.round(pt.latitude * 100000) / 100000,
+                content: address,
+                location: pt
+            });
+        }
+
+    });
+</script>
+
 </html>
