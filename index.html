@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Socket.IO chat</title>
-    <meta charset="UTF-8">
-    <title>King of the Court</title>
-    <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Quantico|Staatliches" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style/mycourt.css">
-    <link rel="stylesheet" href="style/allstyles.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://js.arcgis.com/4.11/"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css">
+      <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Quantico|Staatliches" rel="stylesheet">
+      <link rel="stylesheet" href="style/mycourt.css">
+      <link rel="stylesheet" href="style/allStyle.css">
+      <script src="/socket.io/socket.io.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="/playersDBConnection.js"></script>
+      <script src="https://js.arcgis.com/4.11/"></script>
+      <title>King of the Court </title>
     <style>
       body {
     background-color: rgb(29, 29, 29);
@@ -236,13 +234,7 @@ width: 35%; }
 </div>
 <!--FIRST DROP-->
 <div id="titleName">Online</div>
-<div class="pos-f-t">
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div class="bg-dark p-4">
-        <h5 class="text-white h4">Online</h5>
-        <span class="text-muted">See who has joined KOC, chat with others online and in your area or others,
-          post challenges or accept others. 
-        </span>
+
                  <!-- show top rank-->
     <div id="toprank"class="row">
 
@@ -291,15 +283,7 @@ width: 35%; }
             </div>
           </div>
       </div>
-      </div>
-    </div>
-    <nav class="navbar navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-  </div>
-  
+      
     
         <!-- <ul id="messages"></ul>
       <form class="input" action="">
