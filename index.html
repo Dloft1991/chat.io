@@ -291,14 +291,14 @@ width: 35%; }
                       </div>
         
                       <div class="form-group">
-                        <label for="">Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="Location">
+                        <label for="">Park</label>
+                        <input type="text" class="form-control" id="location" placeholder="Park Name">
                         
                       </div>
         
                       <div class="form-group">
                           <label for="">Time</label>
-                          <input type="text" class="form-control" id="time" placeholder="Time">
+                          <input type="text" class="form-control" id="time" placeholder="Ex: 3:30 PM">
                         </div>
         
                     </form>
@@ -319,7 +319,7 @@ width: 35%; }
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text" id="viewDiv"></p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                
             </div>
         </div>
     </div>
@@ -333,7 +333,7 @@ width: 35%; }
         <div class="col-lg-4">
   
           <div class="card">
-            <div id="tiptop" class="card-header">
+            <div id="chat" class="card-header">
               Top Ranking
             </div>
             <div class="card-body" id="newplayers">
@@ -363,7 +363,7 @@ width: 35%; }
         <div class="col-lg-4">
   
             <div class="card">
-              <div id="tiptop" class="card-header">
+              <div id="chat" class="card-header">
                 Challenges
               </div>
               <div class="card-body" id="bad-section">
@@ -445,7 +445,7 @@ $("#add-chall").on("click", function(event) {
   console.log(
     alias);
 
-    const chall = ["<h2>" + alias+ "<h2>" +"<p>" +sport+"<p>" +"<p>" +location +"<p>"+"<p>"+ time+"<p>"];
+    const chall = ["<h2>" + alias + "<h2>" +"<p>" +sport+"<p>" +"<p>" +location +"<p>"+"<p>"+ time+"<p>"];
 
     $("#bad-section").prepend(chall);
    
@@ -469,7 +469,7 @@ $("#add-btn").on("click", function(event) {
   console.log(
     name);
 
-    const play = ["<h2>" + name+ "<h2>" +"<p>" +city+"<p>" +"<p>" +park +"<p>"+"<p>"+ age+"<p>"];
+    const play = ["<h2>" +name+ "<h2>" +"<p>" +city+"<p>" +"<p>" +park +"<p>"+"<p>"+ age+"<p>"];
 
     $("#newplayers").prepend(play);
    
