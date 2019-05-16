@@ -115,7 +115,16 @@ width: 35%; }
         .row {
             padding: 5%;
         }
-
+        h2 {
+            color: white;
+            background-color: black;
+            font-family: 'Black Ops One', cursive;
+        }
+        p {
+            color: white;
+            background-color: black;
+            font-family: 'Quantico', sans-serif;
+        }
     </style>
   </head>
   <script src="/socket.io/socket.io.js"></script>
@@ -183,7 +192,7 @@ width: 35%; }
         </div>
       </section>
       <!--Sign up-->
-      <div id="titleName">Sign up</div>
+      <div id="titleName">MyCourt</div>
 <!--adding-->
 <div id="createAccount" class="row">
     <div class="col-sm-6">
@@ -327,7 +336,7 @@ width: 35%; }
             <div id="tiptop" class="card-header">
               Top Ranking
             </div>
-            <div class="card-body" id="well-section">
+            <div class="card-body" id="newplayers">
   
               <!-- Content will go in here -->
              
@@ -373,7 +382,7 @@ width: 35%; }
           <input id="m" autocomplete="off" /><button>Send</button>
         </form> -->
   </body>
-
+  <script src="js/post.js" type="text/javascript"></script>
 <script>
   //Map Script
     require([
